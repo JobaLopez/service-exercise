@@ -1,0 +1,7 @@
+<img class="mx-auto" [src]="pokemon()?.sprites?.front_default" [alt]="`Front default sprite of ${pokemon()?.name}`">
+<h1 class="mx-auto text-xl w-fit">{{pokemon()?.name | titlecase}}</h1>
+<div class="mt-3 flex fex-col gap-2">
+    @for (pokemonType of pokemon()?.types; track $index) {
+        <p class="border py-1 px-3 rounded-sm">{{pokemonType.type.name | titlecase}}</p>
+    }
+</div>
