@@ -1,59 +1,19 @@
 # ServiceExercise
 
-This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 22.2.1.
+Este proyecto es un ejercicio para comprender como utilizar un servicio en Angular. En el resultado final tenemos un formulario que actúa como buscador para poder introducir el término a buscar en la PokéAPI.
 
-## Development server
+## Resultado final
+En el último commit tenemos una función asíncrona para mostrar un texto en pantalla en caso de error. Para el formulario se utilizan los ```signal forms``` que aparecieron en las últimas versiones de Angular.
 
-To start a local development server, run:
+## Ejercicio base
 
-```bash
-ng serve
-```
+Si observamos el penúltimo commit, podremos ver una implementación muy básica de un servicio y el uso de la función ```toSignal()``` para convertir un ```Observable``` en ```Signal```.
 
-Once the server is running, open your browser and navigate to `http://localhost:4200/`. The application will automatically reload whenever you modify any of the source files.
-
-## Code scaffolding
-
-Angular CLI includes powerful code scaffolding tools. To generate a new component, run:
-
-```bash
-ng generate component component-name
-```
-
-For a complete list of available schematics (such as `components`, `directives`, or `pipes`), run:
-
-```bash
-ng generate --help
-```
-
-## Building
-
-To build the project run:
-
-```bash
-ng build
-```
-
-This will compile your project and store the build artifacts in the `dist/` directory. By default, the production build optimizes your application for performance and speed.
-
-## Running unit tests
-
-To execute unit tests with the [Vitest](https://vitest.dev/) test runner, use the following command:
-
-```bash
-ng test
-```
-
-## Running end-to-end tests
-
-For end-to-end (e2e) testing, run:
-
-```bash
-ng e2e
-```
-
-Angular CLI does not come with an end-to-end testing framework by default. You can choose one that suits your needs.
-
-## Additional Resources
-
-For more information on using the Angular CLI, including detailed command references, visit the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
+## A recordar
+- Para generar un servicio podemos utilizar el comando ```ng generate service service-name```.
+- Los servicios actúan como singletons dentro del proyecto. Solo hay una instancia de cada servicio y la información puede leerse y escribirse desde cualquier componente en el que se inyecte.
+- Para llamar a un servicio desde un componente utilizamos ```inject(serviceName)```.
+- Utilizaremos ```HttpClient``` para realizar las peticiones de API.
+- ```HttpClient``` devuelve ```Observables``` por lo que si queremos trabajar con ```signals``` tendremos que usar la función ```toSignal()```.
+- En el caso de que nos sea imposible utilizar ```toSignal()``` deberemos suscribirnos al observable y utilizar las callbacks pertinentes para obtener los datos que necesitemos.
+- **IMPORTANTE:** hay que desuscribirse de los observables. En este ejemplo se hace manualmente pero veremos otras opciones más adelante.
